@@ -1,0 +1,5 @@
+Git clone
+dzia³amy na lokalnej kopii
+dodajemy zapisujemy zmiany
+Git commit - zapisujemy do lokalej kopii
+Git push - wysy³amy do tzw. remote'a aby wys³aæ zmiany do g³ównego serwera projektu
