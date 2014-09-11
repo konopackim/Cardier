@@ -1,30 +1,33 @@
 package cardier.mkonopacki.com.cardier;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 
-public class MyActivity extends Activity {
-
-    public final static String EXTRA_MESSAGE = "com.konopackim.cardier.MESSAGE";
+public class DisplayMessageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
-    }
+        setContentView(R.layout.activity_display_message);
 
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my, menu);
-        return true;
+        // Creat text view
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+        textView.setText(message);
+
     }
 
     @Override
@@ -39,11 +42,5 @@ public class MyActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
 }
+
