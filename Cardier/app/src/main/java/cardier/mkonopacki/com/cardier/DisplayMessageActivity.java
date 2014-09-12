@@ -20,14 +20,27 @@ public class DisplayMessageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
 
         // Creat text view
         TextView textView = new TextView(this);
         textView.setTextSize(40);
-        textView.setText(message);
+        //textView.setText(message);
+        textView.setText("Test");
 
+        // Set the text view as the activity layout
+        setContentView(textView);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.my, menu);
+        return true;
     }
 
     @Override
@@ -36,11 +49,17 @@ public class DisplayMessageActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        switch (item.getItemId()) {
+//            case R.id.action_search:
+//                openSearch();
+//                return true;
+//            case R.id.action_settings
+//                openSettings();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
         return super.onOptionsItemSelected(item);
     }
-
 }
 
